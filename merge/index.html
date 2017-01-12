@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MergeSort</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+
+        <div id="header">
+            <button @click="start">Start</button>
+            <button @click="reset">Reset</button>
+            Delay <input type="range" min="1" max="300" v-model="delay"> = {{ delay }}ms
+            —
+            Amount <input type="range" min="2" max="300" v-model="amount"> = {{ amount }}
+        </div>
+
+        <div id="gui">
+            <div class="bars-container">
+                <div v-for="(value, i) in values" class="bars-value" v-bind:style="{ height: (value / maxValue * 100) + '%', width: (100 / values.length) + '%', background: (inArray(i, current)) ? '#AEE496' : '#75C0EE' }"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

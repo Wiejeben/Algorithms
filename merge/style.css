@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    background: #333;
+    color: white;
+}
+
+#header {
+    padding: 10px;
+    background: darkslategrey;
+}
+
+.bars-container {
+    display: flex;
+    align-items: flex-end;
+    height: calc(100vh - 42px);
+}
+
+.bars-value {
+    background: #75c0ee;
+    border-left: 1px solid #222;
+    box-sizing: border-box;
+}
