@@ -4,11 +4,11 @@ namespace Algorithms.Sources
 {
     public class MergeSort
     {
-        private readonly int[] _numbers;
+        private readonly int[] _values;
 
         public MergeSort(int[] values)
         {
-            this._numbers = values;
+            this._values = values;
         }
 
         public static void Sort(int[] values)
@@ -26,10 +26,10 @@ namespace Algorithms.Sources
 
             int median = (low + high) / 2;
 
-            // Split low - median range
+            // Left range
             this.Split(low, median);
 
-            // Split median + 1 - range
+            // Right range
             this.Split(median + 1, high);
 
             // Combine them both
@@ -39,7 +39,7 @@ namespace Algorithms.Sources
         private void Merge(int low, int middle, int high)
         {
             // Create helper to make swapping values easier
-            var helper = (int[]) this._numbers.Clone();
+            var helper = (int[]) this._values.Clone();
 
             int i = low;
             int j = middle + 1;
@@ -50,12 +50,12 @@ namespace Algorithms.Sources
             {
                 if (helper[i] <= helper[j])
                 {
-                    this._numbers[k] = helper[i];
+                    this._values[k] = helper[i];
                     i++;
                 }
                 else
                 {
-                    this._numbers[k] = helper[j];
+                    this._values[k] = helper[j];
                     j++;
                 }
 
@@ -65,7 +65,7 @@ namespace Algorithms.Sources
             // Copy the rest of the left side of the array into the target array
             while (i <= middle)
             {
-                this._numbers[k] = helper[i];
+                this._values[k] = helper[i];
 
                 k++;
                 i++;
