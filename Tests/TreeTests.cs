@@ -30,7 +30,7 @@ namespace Algorithms.Tests
             var tree = new BinaryTree(values);
 
             // Validate entire tree structure
-            // TODO: Iterate through every node to validate data structure
+            Assert.IsTrue(ValidateBst(tree.Root));
         }
 
         [Test]
@@ -44,6 +44,27 @@ namespace Algorithms.Tests
 
             // Check if it can find the first index
             Assert.IsTrue(tree.Search(values[1]));
+        }
+
+        private static bool ValidateBst(BinaryNode node)
+        {
+            if (node.Left != null)
+            {
+                if (node.Value < node.Left.Value || ValidateBst(node.Left) == false)
+                {
+                    return false;
+                }
+            }
+
+            if (node.Right != null)
+            {
+                if (node.Value >= node.Right.Value || ValidateBst(node.Right) == false)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
