@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace Algorithms.Sources
 {
+    // O(n log n)
     public class MergeSort
     {
         private readonly int[] _values;
@@ -49,7 +50,7 @@ namespace Algorithms.Sources
             // As long as we are in range
             while (left <= middle && right <= high)
             {
-                // Decide which way to swap
+                // Decide which side has a lower value and apply that to the main array and move along on just that one side
                 if (temp[left] <= temp[right])
                 {
                     this._values[index] = temp[left];
@@ -64,6 +65,7 @@ namespace Algorithms.Sources
                 index++;
             }
 
+            // Check whether there are leftovers
             // Copy the rest of the left side of the array into the target array
             while (left <= middle)
             {

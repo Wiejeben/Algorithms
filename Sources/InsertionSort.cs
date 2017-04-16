@@ -1,5 +1,7 @@
 ﻿namespace Algorithms.Sources
 {
+    // worst case, reverse order: O(n2)
+    // best case, already sorted: O(n)
     public static class InsertionSort
     {
         public static void Sort(int[] array)
