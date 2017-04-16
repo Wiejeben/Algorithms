@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Algorithms.Sources
+﻿namespace Algorithms.Sources
 {
     public class BinaryTree
     {
@@ -52,6 +50,7 @@ namespace Algorithms.Sources
             if (node == null) return false;
             if (node.Value == value) return true;
 
+            // Go left if lesser or equal, otherwise go right
             return this.Search(value <= node.Value ? node.Left : node.Right, value);
         }
     }

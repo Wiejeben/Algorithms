@@ -11,7 +11,7 @@ namespace Algorithms.Tests
         {
             var array = new int[amount];
 
-            var random = new Random();
+            var random = new Random(Guid.NewGuid().GetHashCode());
             for (int i = 0; i < amount; i++)
             {
                 array[i] = random.Next(min, max);
@@ -65,6 +65,28 @@ namespace Algorithms.Tests
             }
 
             return true;
+        }
+
+        [Test]
+        [Repeat(25)]
+        public void TestKdtInsertAlgorithm()
+        {
+            int[] X = TreeTests.GenerateArrayWithRandomIntegers();
+            int[] Y = TreeTests.GenerateArrayWithRandomIntegers();
+
+            var values = new Vector2[X.Length];
+            for (int i = 0; i < X.Length; i++)
+            {
+                values[i] = new Vector2(X[i], Y[i]);
+            }
+
+            // Build tree
+            var tree = new KdTree(values);
+
+            // Validate entire tree structure
+            // TODO: Write unit test to validate the KdTree
+//            Assert.IsTrue(ValidateBst(tree.Root));
+            Console.Write("");
         }
     }
 }
