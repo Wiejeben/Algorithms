@@ -1,7 +1,7 @@
 ﻿using System;
 
-//Merge Sort
 //Insertion Sort
+//Merge Sort
 //
 //Binary Tree
 //KdTree

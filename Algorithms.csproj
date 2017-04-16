@@ -46,9 +46,11 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\BinaryTree.cs" />
     <Compile Include="Sources\InsertionSort.cs" />
     <Compile Include="Sources\MergeSort.cs" />
     <Compile Include="Tests\SortingTests.cs" />
+    <Compile Include="Tests\TreeTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
