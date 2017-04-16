@@ -1,9 +1,10 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-
-namespace Algorithms.Sources
+﻿namespace Algorithms.Sources
 {
-    // O(n log n)
+    /*
+        Complexity: O(n log n)
+        Video explanation: https://www.youtube.com/watch?v=TzeBrDU-JaY
+        Code implementation: http://www.vogella.com/tutorials/JavaAlgorithmsMergesort/article.html
+    */
     public class MergeSort
     {
         private readonly int[] _values;
