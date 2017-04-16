@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace Algorithms.Sources
 {
@@ -26,49 +27,50 @@ namespace Algorithms.Sources
 
             int median = (low + high) / 2;
 
-            // Left range
+            // Sort left half
             this.Split(low, median);
 
-            // Right range
+            // Sort right half
             this.Split(median + 1, high);
 
-            // Combine them both
+            // Merge both sides together
             this.Merge(low, median, high);
         }
 
         private void Merge(int low, int middle, int high)
         {
             // Create helper to make swapping values easier
-            var helper = (int[]) this._values.Clone();
+            var temp = (int[]) this._values.Clone();
 
-            int i = low;
-            int j = middle + 1;
-            int k = low;
+            int left = low;
+            int right = middle + 1;
+            int index = low;
 
-            // Copy the smallest values from either the left or the right side back to the original array
-            while (i <= middle && j <= high)
+            // As long as we are in range
+            while (left <= middle && right <= high)
             {
-                if (helper[i] <= helper[j])
+                // Decide which way to swap
+                if (temp[left] <= temp[right])
                 {
-                    this._values[k] = helper[i];
-                    i++;
+                    this._values[index] = temp[left];
+                    left++;
                 }
                 else
                 {
-                    this._values[k] = helper[j];
-                    j++;
+                    this._values[index] = temp[right];
+                    right++;
                 }
 
-                k++;
+                index++;
             }
 
             // Copy the rest of the left side of the array into the target array
-            while (i <= middle)
+            while (left <= middle)
             {
-                this._values[k] = helper[i];
+                this._values[index] = temp[left];
 
-                k++;
-                i++;
+                index++;
+                left++;
             }
         }
     }
