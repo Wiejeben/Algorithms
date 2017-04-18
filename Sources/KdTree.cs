@@ -18,20 +18,20 @@ namespace Algorithms.Sources
             int median = length / 2;
             bool even = depth % 2 == 0;
 
-            // When there are no more positions left
+            // When there are no more positions
             if (length == 0) return null;
 
-            // When we cannot split any further
+            // No point in splitting any further
             if (length == 1) return new KdNode(positions[0]);
 
             // Sort values based on their axis
             positions = positions.OrderBy(p => even ? p.X : p.Y).ToArray();
 
-            // Take sides
+            // Split sides (left will always be less
             Vector2[] left = positions.Take(median).ToArray();
             Vector2[] right = positions.Skip(median + 1).ToArray();
 
-            // Generate median value and go both ways
+            // Create node from the median
             return new KdNode(positions[median])
             {
                 Left = this.BulkInsert(left, depth + 1),
