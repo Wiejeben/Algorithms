@@ -1,65 +1,42 @@
-﻿namespace Algorithms.Sources
+﻿using System;
+using System.Linq;
+
+namespace Algorithms.Sources
 {
-    public class Vector2
-    {
-        public float X { get; set; }
-        public float Y { get; set; }
-
-        public Vector2(float x, float y)
-        {
-            this.X = x;
-            this.Y = y;
-        }
-
-        public override string ToString()
-        {
-            return this.X + " - " + this.Y;
-        }
-    }
-
     public class KdTree
     {
         public KdNode Root { get; set; }
 
         public KdTree(Vector2[] values)
         {
-            foreach (Vector2 value in values)
-            {
-                this.Root = this.Insert(value);
-            }
+            this.Root = this.BulkInsert(values);
         }
 
-        public KdNode Insert(Vector2 value)
+        public KdNode BulkInsert(Vector2[] positions, int depth = 0)
         {
-            return this.Insert(this.Root, value);
-        }
-
-        public KdNode Insert(KdNode node, Vector2 value, int depth = 0)
-        {
-            // New node
-            if (node == null)
-            {
-                node = new KdNode(value);
-                return node;
-            }
-
-            // Determine axis
+            int length = positions.Length;
+            int median = length / 2;
             bool even = depth % 2 == 0;
 
-            var valueAxis = even ? value.X : value.Y;
-            var nodeValueAxis = even ? node.Value.X : node.Value.Y;
+            // When there are no more positions left
+            if (length == 0) return null;
 
-            // Go left if lesser or equal, otherwise go right
-            if (valueAxis <= nodeValueAxis)
-            {
-                node.Left = this.Insert(node.Left, value, depth + 1);
-            }
-            else
-            {
-                node.Right = this.Insert(node.Right, value, depth + 1);
-            }
+            // When we cannot split any further
+            if (length == 1) return new KdNode(positions[0]);
 
-            return node;
+            // Sort values based on their axis
+            positions = positions.OrderBy(p => even ? p.X : p.Y).ToArray();
+
+            // Take sides
+            Vector2[] left = positions.Take(median).ToArray();
+            Vector2[] right = positions.Skip(median + 1).ToArray();
+
+            // Generate median value and go both ways
+            return new KdNode(positions[median])
+            {
+                Left = this.BulkInsert(left, depth + 1),
+                Right = this.BulkInsert(right, depth + 1)
+            };
         }
     }
 
@@ -77,6 +54,23 @@
         public override string ToString()
         {
             return this.Value.ToString();
+        }
+    }
+
+    public class Vector2
+    {
+        public float X { get; set; }
+        public float Y { get; set; }
+
+        public Vector2(float x, float y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+
+        public override string ToString()
+        {
+            return this.X + " - " + this.Y;
         }
     }
 }

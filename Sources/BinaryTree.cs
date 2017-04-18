@@ -20,11 +20,7 @@
         public BinaryNode Insert(BinaryNode node, int value)
         {
             // New node
-            if (node == null)
-            {
-                node = new BinaryNode(value);
-                return node;
-            }
+            if (node == null) return new BinaryNode(value);
 
             // Go left if lesser or equal, otherwise go right
             if (value <= node.Value)

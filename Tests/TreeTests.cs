@@ -71,13 +71,13 @@ namespace Algorithms.Tests
         [Repeat(25)]
         public void TestKdtInsertAlgorithm()
         {
-            int[] X = TreeTests.GenerateArrayWithRandomIntegers();
-            int[] Y = TreeTests.GenerateArrayWithRandomIntegers();
+            int[] x = TreeTests.GenerateArrayWithRandomIntegers();
+            int[] y = TreeTests.GenerateArrayWithRandomIntegers();
 
-            var values = new Vector2[X.Length];
-            for (int i = 0; i < X.Length; i++)
+            var values = new Vector2[x.Length];
+            for (int i = 0; i < x.Length; i++)
             {
-                values[i] = new Vector2(X[i], Y[i]);
+                values[i] = new Vector2(x[i], y[i]);
             }
 
             // Build tree
@@ -85,7 +85,7 @@ namespace Algorithms.Tests
 
             // Validate entire tree structure
             // TODO: Write unit test to validate the KdTree
-//            Assert.IsTrue(ValidateBst(tree.Root));
+            // Assert.IsTrue(ValidateBst(tree.Root));
             Console.Write("");
         }
     }
