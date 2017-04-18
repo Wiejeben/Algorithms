@@ -85,8 +85,36 @@ namespace Algorithms.Tests
 
             // Validate entire tree structure
             // TODO: Write unit test to validate the KdTree
-            // Assert.IsTrue(ValidateBst(tree.Root));
+            Assert.IsTrue(ValidateKdt(tree.Root));
             Console.Write("");
+        }
+
+        private static bool ValidateKdt(KdNode node, int depth = 0)
+        {
+            bool even = depth % 2 == 0;
+            var nodeValue = even ? node.Value.X : node.Value.Y;
+
+            if (node.Left != null)
+            {
+                var leftValue = even ? node.Left.Value.X : node.Left.Value.Y;
+
+                if (nodeValue < leftValue || ValidateKdt(node.Left, ++depth) == false)
+                {
+                    return false;
+                }
+            }
+
+            if (node.Right != null)
+            {
+                var rightValue = even ? node.Right.Value.X : node.Right.Value.Y;
+
+                if (nodeValue >= rightValue || ValidateKdt(node.Right, ++depth) == false)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

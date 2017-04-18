@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Algorithms.Sources
 {
@@ -34,8 +33,8 @@ namespace Algorithms.Sources
             // Create node from the median
             return new KdNode(positions[median])
             {
-                Left = this.BulkInsert(left, depth + 1),
-                Right = this.BulkInsert(right, depth + 1)
+                Left = this.BulkInsert(left, ++depth),
+                Right = this.BulkInsert(right, ++depth)
             };
         }
     }
