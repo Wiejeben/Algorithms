@@ -39,17 +39,17 @@
             this.Merge(low, median, high);
         }
 
-        private void Merge(int low, int middle, int high)
+        private void Merge(int low, int median, int high)
         {
             // Create helper to make swapping values easier
             var temp = (int[]) this._values.Clone();
 
             int left = low;
-            int right = middle + 1;
+            int right = median + 1;
             int index = low;
 
             // As long as we are in range
-            while (left <= middle && right <= high)
+            while (left <= median && right <= high)
             {
                 // Decide which side has a lower value and apply that to the main array and move along on just that one side
                 if (temp[left] <= temp[right])
@@ -68,7 +68,7 @@
 
             // Check whether there are leftovers
             // Copy the rest of the left side of the array into the target array
-            while (left <= middle)
+            while (left <= median)
             {
                 this._values[index] = temp[left];
 

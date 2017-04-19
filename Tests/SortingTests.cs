@@ -22,7 +22,7 @@ namespace Algorithms.Tests
         }
 
         [Test]
-        [Repeat(25)]
+//        [Repeat(25)]
         public void TestInsertionSortAlgorithm()
         {
             int[] expected = SortingTests.GenerateArrayWithRandomIntegers();
@@ -36,7 +36,7 @@ namespace Algorithms.Tests
         }
 
         [Test]
-        [Repeat(25)]
+//        [Repeat(25)]
         public void TestMergeSortAlgorithm()
         {
             int[] expected = SortingTests.GenerateArrayWithRandomIntegers();

@@ -20,10 +20,8 @@
                 // Keep going as long as the current item is smaller than the left item
                 while (current > 0 && array[current] < array[current - 1])
                 {
-                    SwapValues(array, current - 1, current);
-
-                    // Go to previous item
-                    current--;
+                    // Swap and go to the previous item
+                    SwapValues(array, current--, current);
                 }
             }
         }

@@ -21,7 +21,7 @@ namespace Algorithms.Tests
         }
 
         [Test]
-        [Repeat(25)]
+//        [Repeat(25)]
         public void TestBstInsertAlgorithm()
         {
             int[] values = TreeTests.GenerateArrayWithRandomIntegers();
@@ -34,7 +34,7 @@ namespace Algorithms.Tests
         }
 
         [Test]
-        [Repeat(25)]
+//        [Repeat(25)]
         public void TestBstSearchAlgorithm()
         {
             int[] values = TreeTests.GenerateArrayWithRandomIntegers();
@@ -68,7 +68,7 @@ namespace Algorithms.Tests
         }
 
         [Test]
-        [Repeat(25)]
+//        [Repeat(25)]
         public void TestKdtInsertAlgorithm()
         {
             int[] x = TreeTests.GenerateArrayWithRandomIntegers();
