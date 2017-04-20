@@ -14,10 +14,10 @@
 
         public BinaryNode Insert(int value)
         {
-            return this.Insert(this.Root, value);
+            return Insert(this.Root, value);
         }
 
-        public BinaryNode Insert(BinaryNode node, int value)
+        private static BinaryNode Insert(BinaryNode node, int value)
         {
             // New node
             if (node == null) return new BinaryNode(value);
@@ -25,11 +25,11 @@
             // Go left if lesser or equal, otherwise go right
             if (value <= node.Value)
             {
-                node.Left = this.Insert(node.Left, value);
+                node.Left = Insert(node.Left, value);
             }
             else
             {
-                node.Right = this.Insert(node.Right, value);
+                node.Right = Insert(node.Right, value);
             }
 
             return node;
@@ -37,17 +37,17 @@
 
         public bool Search(int value)
         {
-            return this.Search(this.Root, value);
+            return Search(this.Root, value);
         }
 
-        public bool Search(BinaryNode node, int value)
+        private static bool Search(BinaryNode node, int value)
         {
             // Conclude
             if (node == null) return false;
             if (node.Value == value) return true;
 
             // Go left if lesser or equal, otherwise go right
-            return this.Search(value <= node.Value ? node.Left : node.Right, value);
+            return Search(value <= node.Value ? node.Left : node.Right, value);
         }
     }
 

@@ -8,10 +8,10 @@ namespace Algorithms.Sources
 
         public KdTree(Vector2[] values)
         {
-            this.Root = this.BulkInsert(values);
+            this.Root = BulkInsert(values);
         }
 
-        public KdNode BulkInsert(Vector2[] positions, int depth = 0)
+        private static KdNode BulkInsert(Vector2[] positions, int depth = 0)
         {
             int length = positions.Length;
             int median = length / 2;
@@ -33,8 +33,8 @@ namespace Algorithms.Sources
             // Create node from the median
             return new KdNode(positions[median])
             {
-                Left = this.BulkInsert(left, ++depth),
-                Right = this.BulkInsert(right, ++depth)
+                Left = BulkInsert(left, ++depth),
+                Right = BulkInsert(right, ++depth)
             };
         }
     }
